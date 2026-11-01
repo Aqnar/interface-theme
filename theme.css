@@ -294,6 +294,19 @@ body > a[href$="/torrents/staff-application"],
 body > div[id$="-radio-widget"] {
   display: none !important;
 }
+
+/* Keep both home blocks, their contents and wrappers; fail open if neither exists. */
+.page__home:has(.blocks__news, .blocks__top-torrents) :not(
+  .blocks__news,
+  .blocks__top-torrents,
+  .blocks__news *,
+  .blocks__top-torrents *,
+  :has(.blocks__news, .blocks__top-torrents)
+),
+body:has(.page__home) .footer {
+  display: none !important;
+}
+
 .mediahub-card { padding: 24px; }
 .mediahub-card__heading { color: var(--ui-ink); }
 .mediahub-card__subheading { color: var(--ui-muted); }
